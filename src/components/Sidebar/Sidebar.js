@@ -11,13 +11,13 @@ function Sidebar() {
                     <h2>Ut Programmer</h2>
                     <h3>
                         <FibreManualRecordIcon />
-                        utkarsh thakur
+                        Utkarsh Thakur
                     </h3>
                 </div>
-            <CreateIcon />
+                <CreateIcon />
             </div>
         </div>
     )
 }
 
-export default Sidebar
+export default Sidebar;
