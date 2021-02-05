@@ -4,11 +4,12 @@ import './Chat.css';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorder';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import db from '../../configuration/Firebase/Firebase';
+import Message from './Message/Message';
 
 function Chat() {
     const { roomId } = useParams();
     const [roomDetails, setRoomDetails] = useState(null);
-    const [roomMessages, setRoomMessages] = useState(null);
+    const [roomMessages, setRoomMessages] = useState([]);
 
     useEffect(() => {
         if(roomId) {
@@ -40,7 +41,14 @@ function Chat() {
             </div>
 
             <div className="chat__messages">
-                {/* <Message .../> */}
+                {roomMessages.map(({message, timestamp, user, userImage})=> (
+                    <Message 
+                        message={message}
+                        timestamp={timestamp}
+                        user={user}
+                        userImage={userImage}
+                    />
+                ))}
             </div>
         </div>
     )
