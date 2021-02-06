@@ -1,8 +1,28 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
+import { auth, provider } from '../../configuration/Firebase/Firebase';
+import actionTypes from '../../Context/actions/actionType';
+import { useStateValue } from '../../Context/StateProvider';
 import './Login.css';
 
 function Login() {
+
+    const [{}, dispatch] = useStateValue();
+
+    const signIn = (e) => {
+        auth.signInWithPopup(provider)
+        .then(result => {
+            console.log(result);
+            dispatch({
+                type: actionTypes.SET_USER,
+                user: result.user,
+            })
+        })
+        .catch(error => {
+            alert(error.message);
+        })
+    }
+
     return (
         <div className="login">
             <div className="login__container">
@@ -12,7 +32,7 @@ function Login() {
                 />
                 <h1>Sign in to Bitching HQ</h1>
                 <p>Clover pocket</p>
-                <Button>Sign in with Google</Button>
+                <Button onClick={signIn}>Sign in with Google</Button>
             </div>
         </div>
     )

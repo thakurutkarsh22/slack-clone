@@ -5,10 +5,12 @@ import Sidebar from './components/Sidebar/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Chat from './components/Chat/Chat';
 import Login from './components/Login/Login';
+import { useStateValue } from './Context/StateProvider';
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
+  const [{ user }, dispatch] = useStateValue();
 
   return (
     // BEM naming convention.
