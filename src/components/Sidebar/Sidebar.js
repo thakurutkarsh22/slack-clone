@@ -14,10 +14,12 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import db from '../../configuration/Firebase/Firebase';
+import { useStateValue } from '../../Context/StateProvider';
 
 
 function Sidebar() {
     const [channels, setChannels] = useState([]);
+    const [{user}] = useStateValue();
 
     // run this code when the sidebar component loads.
     //// Similar to componentDidMount and componentDidUpdate:
@@ -41,7 +43,7 @@ function Sidebar() {
                     <h2>Ut Programmer</h2>
                     <h3>
                         <FibreManualRecordIcon />
-                        Utkarsh Thakur
+                        {user?.displayName}
                     </h3>
                 </div>
                 <CreateIcon />
